@@ -34,6 +34,8 @@ export const onFetchProduct = () => {
 };
 
 // 2. reducers: a pure function which is taking some input and it is taking the same output depends on the condition
+// reducer is required to catch the action and store the data in state.
+// and other components can access the same
 const userReducer = (state = {}, action) => {
   switch (action.type) {
     case "DO_LOGIN": // (2) case will be same as type in dispatch of actions
@@ -58,6 +60,7 @@ const userReducer = (state = {}, action) => {
 
 // 3. root reducer: combine multiple reducers in the single unit
 // (5) make root reducer. `userRecuder,` means `userReducer: userReducer`.
+// if you have another reducer, then add rootReducer
 export const rootReducer = combineReducers({
   userReducer,
 });
