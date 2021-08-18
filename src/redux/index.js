@@ -6,7 +6,10 @@ import thunk from "redux-thunk";
 export const onUserLogin = ({ email, password }) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("URL", { email, password });
+      const response = await axios.post(
+        "https://netflix-example.herokuapp.com/user/mock-login",
+        { email, password }
+      );
       // (1) once, we receive the data we will dispatch that data along with type and payload
       dispatch({ type: "DO_LOGIN", payload: response.data });
     } catch (error) {
@@ -66,5 +69,5 @@ export const rootReducer = combineReducers({
 });
 
 // 4. store: will be accessible from our application and in various parts
-// (6) make store 
+// (6) make store
 export const store = createStore(rootReducer, applyMiddleware(thunk));
